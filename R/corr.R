@@ -74,7 +74,7 @@ compute_cramer_v <- function(x, y = NULL) {
 #' @param ... parameters to pass to \code{\link[stats]{cor}}
 #' @return A numeric value if \code{x} and \code{y} are vectors or a matrix if
 #'   \code{x} is a matrix or a data frame.
-#' @seealso \code{\link{compute_cramer_v}}, \code{\link{plot_cor}}
+#' @seealso \code{\link{plot_cor}}
 #' @examples
 #' compute_cor(mtcars)
 #' compute_cor(mtcars, method = "spearman")
@@ -141,7 +141,7 @@ compute_clustering <- function(data) {
 #' @param text_size A numeric value to change the size of the labels.
 #' @param ... Parameters to pass to \code{\link[ggplot2]{theme}}.
 #' @return A ggplot2 object.
-#' @seealso \code{\link{compute_cramer_v}}, \code{\link{plot_cor}}
+#' @seealso \code{\link{compute_cor}}
 #' @examples
 #' cor_results <- compute_cor(mtcars)
 #' plot_cor(cor_results)

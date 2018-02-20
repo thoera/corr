@@ -33,5 +33,5 @@ compute_cor(mtcars, method = "spearman")
 compute_cor(tea$price, tea$home, method = "cramer")
 }
 \seealso{
-\code{\link{compute_cramer_v}}, \code{\link{plot_cor}}
+\code{\link{plot_cor}}
 }

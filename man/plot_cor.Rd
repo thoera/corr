@@ -53,5 +53,5 @@ plot_cor(cor_results, palette = "inferno", value = TRUE)
 plot_cor(cor_results, type = "lower", clustering = TRUE)
 }
 \seealso{
-\code{\link{compute_cramer_v}}, \code{\link{plot_cor}}
+\code{\link{compute_cor}}
 }
