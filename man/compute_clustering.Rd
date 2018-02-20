@@ -9,5 +9,5 @@ compute_clustering(data)
 \description{
 The optimal model according to BIC for EM initialized by hierarchical
 clustering for parameterized Gaussian mixture models.
-It uses the \code{\link[mclust]{Mclust}} function.
+Use the \code{\link[mclust]{Mclust}} function.
 }

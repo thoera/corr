@@ -102,19 +102,9 @@ compute_cor <- function(x,
 #'
 #' The optimal model according to BIC for EM initialized by hierarchical
 #' clustering for parameterized Gaussian mixture models.
-#' It uses the \code{\link[mclust]{Mclust}} function.
+#' Use the \code{\link[mclust]{Mclust}} function.
 #' @import mclust
 compute_clustering <- function(data) {
-  # --
-  # Description:
-  # Compute the optimal model according to BIC for EM initialized by
-  # hierarchical clustering for parameterized Gaussian mixture models.
-  # Use the mclust::Mclust() function.
-  #
-  # Arguments:
-  #   data: a numeric vector, matrix or data frame.
-  # --
-
   max_clusters <- ceiling(sqrt(ncol(data)))
   r <- mclust::Mclust(data, G = 2:max_clusters,
                       verbose = FALSE)[["classification"]]
@@ -137,7 +127,7 @@ compute_clustering <- function(data) {
 #' @param color_value A color string ("#ffffff" by default) for the label
 #'   values.
 #' @param clustering A boolean (FALSE by default). Should the variables be
-#'   ordered by a clustering?
+#'   ordered by a clustering? Use the \code{\link[mclust]{Mclust}} function.
 #' @param text_size A numeric value to change the size of the labels.
 #' @param ... Parameters to pass to \code{\link[ggplot2]{theme}}.
 #' @return A ggplot2 object.

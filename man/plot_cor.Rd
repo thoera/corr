@@ -29,7 +29,7 @@ visible?}
 values.}
 
 \item{clustering}{A boolean (FALSE by default). Should the variables be
-ordered by a clustering?}
+ordered by a clustering? Use the \code{\link[mclust]{Mclust}} function.}
 
 \item{text_size}{A numeric value to change the size of the labels.}
 
