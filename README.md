@@ -34,5 +34,8 @@ starwars %>%
   select(-name) %>%
   filter(complete.cases(.)) %>%
   compute_cor(method = "cramer") %>%
-  plot_cor(type = "lower", value = TRUE)
+  plot_cor(type = "lower",
+           value = TRUE,
+           limits_scale = c(0, 1),
+           title_legend = "Cramér's V:")
 ```
