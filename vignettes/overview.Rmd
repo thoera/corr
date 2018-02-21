@@ -1,0 +1,66 @@
+---
+title: "Overview"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document introduces you to the two main functions of the package:
+
+- `compute_cor()`
+- `plot_cor()`
+
+## Compute correlation coefficients and Cramér's V 
+
+To explore the basics of the package, we'll use the `mtcars` dataset and the `tea` dataset.
+
+The mtcars dataset is built-in in R and the tea dataset comes originally from the `FactoMineR` package but it's also shipped with `corr`.
+
+<br>
+Computing a correlation coefficient or the Cramér's V is simple:
+
+```{r}
+library("corr")
+
+results <- compute_cor(tea, method = "cramer")
+```
+
+Four methods are available:
+
+- "pearson"
+- "kendall"
+- "spearman"
+- "cramer"
+
+The "pearson", "kendall" or "spearman" methods should be used for numerical variables. 
+See `stats::cor()` for more details.
+
+On the other hand, the "cramer" method is usefull to measure the association between nominal variables (see the [wikipedia article](https://en.wikipedia.org/wiki/Cram%C3%A9r%27s_V) for more).
+
+## Visualize the results
+
+After computing the correlation, you can use the `plot_cor()` function to visualize the results with a heatmap.
+
+```{r, fig.width=6, fig.height=6, fig.align="center"}
+results <- compute_cor(mtcars, method = "pearson")
+plot_cor(results)
+```
+
+<br>
+Different options are available (see `help(plot_corr)` for the whole list).
+
+For instance, we can plot only the lower triangle of the matrix, change the palette of colors and reorder the variables by an "optimal" number of groups.
+
+```{r, fig.width=6, fig.height=6, fig.align="center"}
+plot_cor(results, type = "lower", palette = "inferno", clustering = TRUE)
+```

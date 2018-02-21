@@ -14,3 +14,6 @@ Imports:
     mclust (>= 5.4),
     viridis (>= 0.5.0)
 RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr

@@ -22,7 +22,7 @@ compute_cramer_v <- function(x, y = NULL) {
   }
 
   cramer_v <- function(...) {
-    test <- chisq.test(...)
+    test <- chisq.test(..., correct = FALSE)
     chi2 <- test[["statistic"]]
     n <- sum(test[["observed"]])
     if (test[["method"]] == "Chi-squared test for given probabilities") {
