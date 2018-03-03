@@ -42,6 +42,6 @@ starwars %>%
 
 ## Example
 
-With the `mtcars` dataset :
+With the `mtcars` dataset:
 
 ![examples.png](/README_examples/examples.png?raw=true)
