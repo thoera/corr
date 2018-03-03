@@ -3,7 +3,7 @@ Title: Compute and visualize correlations and Cramér's V
 Version: 0.0.0.9000
 Authors@R: person("Thomas", "Erard", email = "erard.thomas@gmail.com", role = c("aut", "cre"))
 URL: https://github.com/thoera/corr
-https: //github.com/thoera/corr/issues
+BugReports: https://github.com/thoera/corr/issues
 Description: This package implements a consistent interface to compute correlations and Cramér's V and offers an easy way to visualize the results with heatmaps.
 Depends: R (>= 3.4.3)
 License: MIT + file LICENSE
