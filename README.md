@@ -39,3 +39,9 @@ starwars %>%
            limits_scale = c(0, 1),
            title_legend = "Cramér's V:")
 ```
+
+## Example
+
+With the `mtcars` dataset :
+
+![examples.png](/README_examples/examples.png?raw=true)
