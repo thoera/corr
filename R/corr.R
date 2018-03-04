@@ -1,15 +1,15 @@
-#' Cramér's V
-#'
-#' Compute the Cramér's V measure of association.
-#'
-#' @param x A character vector, matrix or data frame.
-#' @param y NULL (default) or a vector if x is a vector.
-#' @return A numeric value if \code{x} and \code{y} are vectors or a matrix if
-#'   \code{x} is a matrix or a data frame.
-#' @seealso \code{\link{compute_cor}}, \code{\link{plot_cor}}
-#' @examples
-#' compute_cramer_v(tea)
-#' compute_cramer_v(tea$price, tea$home)
+# Cramér's V
+#
+# Compute the Cramér's V measure of association.
+#
+# @param x A character vector, matrix or data frame.
+# @param y NULL (default) or a vector if x is a vector.
+# @return A numeric value if \code{x} and \code{y} are vectors or a matrix if
+#   \code{x} is a matrix or a data frame.
+# @seealso \code{\link{compute_cor}}, \code{\link{plot_cor}}
+# @examples
+# compute_cramer_v(tea)
+# compute_cramer_v(tea$price, tea$home)
 compute_cramer_v <- function(x, y = NULL) {
   if (is.data.frame(x)) {
     if (sum(vapply(x, function(col) is.factor(col) | is.character(col),
@@ -22,7 +22,7 @@ compute_cramer_v <- function(x, y = NULL) {
   }
 
   cramer_v <- function(...) {
-    test <- chisq.test(..., correct = FALSE)
+    test <- stats::chisq.test(..., correct = FALSE)
     chi2 <- test[["statistic"]]
     n <- sum(test[["observed"]])
     if (test[["method"]] == "Chi-squared test for given probabilities") {
@@ -45,7 +45,7 @@ compute_cramer_v <- function(x, y = NULL) {
   } else {
     n_cols <- ncol(x)
     names_col <- names(x)
-    combinations <- combn(names_col, m = 2L, simplify = FALSE)
+    combinations <- utils::combn(names_col, m = 2L, simplify = FALSE)
     tables <- lapply(combinations, function(col) {
       table(x[, c(col)])
     })
@@ -93,7 +93,7 @@ compute_cor <- function(x,
   if (method == "cramer") {
     results <- compute_cramer_v(x = x, y = y)
   } else {
-    results <- cor(x = x, y = y, method = method, ...)
+    results <- stats::cor(x = x, y = y, method = method, ...)
   }
   return(results)
 }
@@ -103,6 +103,7 @@ compute_cor <- function(x,
 #' The optimal model according to BIC for EM initialized by hierarchical
 #' clustering for parameterized Gaussian mixture models.
 #' Use the \code{\link[mclust]{Mclust}} function.
+#' @param data A matrix or data frame.
 #' @import mclust
 compute_clustering <- function(data) {
   max_clusters <- ceiling(sqrt(ncol(data)))
@@ -201,12 +202,13 @@ plot_cor <- function(data,
   }
 
   g <- ggplot2::ggplot(data = cor_ggplot,
-                       ggplot2::aes(x = Var1, y = Var2, fill = value,
-                                    text = paste0(
-                                      "x: ", Var1, "\n",
-                                      "y: ", Var2, "\n",
-                                      "Value: ", round(value, 2L))
-                       )) +
+                       ggplot2::aes_(
+                         x = quote(Var1), y = quote(Var2), fill = quote(value),
+                         text = quote(paste0("x: ", Var1, "\n",
+                                             "y: ", Var2, "\n",
+                                             "Value: ", round(value, 2L)))
+                       )
+  ) +
     ggplot2::geom_tile(color = "#ffffff") +
     viridis::scale_fill_viridis(limits = limits_scale,
                                 option = palette,

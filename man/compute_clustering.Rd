@@ -6,6 +6,9 @@
 \usage{
 compute_clustering(data)
 }
+\arguments{
+\item{data}{A matrix or data frame.}
+}
 \description{
 The optimal model according to BIC for EM initialized by hierarchical
 clustering for parameterized Gaussian mixture models.
