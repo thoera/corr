@@ -11,8 +11,8 @@ corr fits naturally in the `tidyverse` and is "pipe-friendly".
 To install the package, simply run the following from an R console:
 
 ```r
-# install.packages("devtools")
-devtools::install_github("thoera/corr")
+# install.packages("remotes")
+remotes::install_github("thoera/corr")
 ```
 
 ## Usage
