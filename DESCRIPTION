@@ -1,18 +1,19 @@
 Package: corr
 Title: Compute and Visualize Correlations and Cramér's V
-Version: 0.0.0.9000
+Version: 0.0.1.9000
 Authors@R: person("Thomas", "Erard", email = "erard.thomas@gmail.com", role = c("aut", "cre"))
 URL: https://github.com/thoera/corr
 BugReports: https://github.com/thoera/corr/issues
 Description: This package implements a consistent interface to compute correlations and Cramér's V and offers an easy way to visualize the results with heatmaps.
-Depends: R (>= 3.4.3)
+Depends: R (>= 3.4.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: ggplot2 (>= 2.2.1),
+Imports: 
+    ggplot2 (>= 3.1.0),
     mclust (>= 5.4),
-    viridis (>= 0.5.0)
-RoxygenNote: 6.0.1
+    rlang (>= 0.3.0.1)
+RoxygenNote: 6.1.1
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr

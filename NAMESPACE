@@ -3,3 +3,4 @@
 export(compute_cor)
 export(plot_cor)
 import(mclust)
+importFrom(rlang,.data)

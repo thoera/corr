@@ -143,6 +143,7 @@ compute_clustering <- function(data) {
 #' # show only the lower triangle and reorder the columns by cluster
 #' plot_cor(cor_results, type = "lower", clustering = TRUE)
 #' @export
+#' @importFrom rlang .data
 plot_cor <- function(data,
                      type = c("full", "lower", "upper"),
                      limits_scale = c(-1, 1),
@@ -151,7 +152,7 @@ plot_cor <- function(data,
                      value = FALSE,
                      color_value = "#ffffff",
                      clustering = FALSE,
-                     text_size = 14, ...) {
+                     text_size = 12, ...) {
   if (!(is.matrix(data) | is.data.frame(data))) {
     stop("'data' must be a matrix or a data frame")
   }
@@ -183,8 +184,8 @@ plot_cor <- function(data,
   }
 
   # reshape the data to long format
-  cor_ggplot <- cbind(expand.grid(dimnames(data)), value = as.vector(data))
-  cor_ggplot <- cor_ggplot[!is.na(cor_ggplot[["value"]]), ]
+  data_lg <- cbind(expand.grid(dimnames(data)), value = as.vector(data))
+  data_lg <- data_lg[!is.na(data_lg[["value"]]), ]
 
   # a ggplot2 theme
   theme_heatmap <- function(text_size = text_size) {
@@ -201,18 +202,22 @@ plot_cor <- function(data,
                      legend.title = ggplot2::element_text(size = 14))
   }
 
-  g <- ggplot2::ggplot(data = cor_ggplot,
-                       ggplot2::aes_(
-                         x = quote(Var1), y = quote(Var2), fill = quote(value),
-                         text = quote(paste0("x: ", Var1, "\n",
-                                             "y: ", Var2, "\n",
-                                             "Value: ", round(value, 2L)))
+  g <- ggplot2::ggplot(data = data_lg,
+                       ggplot2::aes(
+                         x = .data[["Var1"]],
+                         y = .data[["Var2"]],
+                         fill = .data[["value"]],
+                         text = paste0(
+                           "x: ", .data[["Var1"]], "\n",
+                           "y: ", .data[["Var2"]], "\n",
+                           "Value: ", round(.data[["value"]], 2L)
+                         )
                        )
   ) +
     ggplot2::geom_tile(color = "#ffffff") +
-    viridis::scale_fill_viridis(limits = limits_scale,
-                                option = palette,
-                                name = title_legend) +
+    ggplot2::scale_fill_viridis_c(limits = limits_scale,
+                                  option = palette,
+                                  name = title_legend) +
     ggplot2::coord_fixed() +
     ggplot2::labs(title = "", x = "", y = "") +
     theme_heatmap(text_size = text_size) +

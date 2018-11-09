@@ -4,10 +4,10 @@
 \alias{plot_cor}
 \title{Plot a heatmap}
 \usage{
-plot_cor(data, type = c("full", "lower", "upper"), limits_scale = c(-1, 1),
-  title_legend = "Correlation", palette = c("viridis", "inferno", "magma",
-  "plasma"), value = FALSE, color_value = "#ffffff", clustering = FALSE,
-  text_size = 14, ...)
+plot_cor(data, type = c("full", "lower", "upper"), limits_scale = c(-1,
+  1), title_legend = "Correlation", palette = c("viridis", "inferno",
+  "magma", "plasma"), value = FALSE, color_value = "#ffffff",
+  clustering = FALSE, text_size = 12, ...)
 }
 \arguments{
 \item{data}{A matrix or data frame.}
